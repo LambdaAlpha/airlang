@@ -39,19 +39,19 @@
 
 ### 注释
 
-`comment # value`
+`comment ~ value`
 
-`comment` 和 `value` 为任意字面量。`comment # value` 被解析为 `value`。
+`comment` 和 `value` 为任意字面量。`comment ~ value` 被解析为 `value`。
 
-注释用于表达语义无关的信息，。
+注释用于表达语义无关的信息。
 
 示例：
 
 ```air
-a # 1
-"this is a comment" # '
-1 # 2
-(a[]) # '
+a ~ 1
+"this is a comment" ~ '
+1 ~ 2
+(a[]) ~ '
 ```
 
 ### 封装
@@ -67,7 +67,7 @@ a # 1
 ```air
 (a) === a
 (a b) === a b
-(a # b) === b
+(a ~ b) === b
 (a b) : c === (a b) : c
 a (b : c) === a (b : c)
 a b c === b (a : c)
@@ -94,6 +94,15 @@ a [] b === [] (a : b)
   - `(a : b) c`
   - `(a ? b) c`
   - `(a + b) c`
+
+## 简写形式
+
+注释，配对，逆运算等中缀形式 `left op right`，若 `left` 和 `right` 相同，则可以简写为 `op right` 形式。例如：
+
+- `~ a` === `a ~ a` === `a`
+- `: a` === `a : a`
+- `? a` === `a ? a`
+- `{: a}` === `{a : a}`
 
 ## 兼容性
 
