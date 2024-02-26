@@ -87,21 +87,21 @@
 
 词汇之间必须使用空白符隔开，除非其中一个词汇是语法特征词汇（`()[]{},`）。
 
-### 注释
+### 注解
 
-`comment @ value`
+`annotation @ value`
 
-`comment` 和 `value` 为任意字面量。`comment @ value` 被解析为 `value`。
+`annotation` 和 `value` 为任意字面量。`annotation @ value` 被解析为 `value`。
 
-注释用于表达语义无关的信息。
+注解用于表达额外的信息。
 
 示例：
 
 ```air
 a @ 1
-"this is a comment" @ '
+"this is a annotation" @ .
 1 @ 2
-(a[]) @ '
+(a[]) @ .
 ```
 
 ### 括号
