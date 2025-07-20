@@ -11,7 +11,7 @@ _ do [
     c_for = _ function {
         code : (.ctx : .args) : _ do [
             [.init, .condition, .next, .body] = .args,
-            .ctx | _ do [
+            .ctx ; eval _ do [
                 .init,
                 .condition loop [
                     .body,
