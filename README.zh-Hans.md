@@ -5,13 +5,14 @@ Air 编程语言是一门实验性编程语言。它的主要目标是通用性�
 ## Demo
 
 ```air
-_("A demo of implementing a C-like for function")
+_("A demo of implementing a C-style for function")
 
 _ do [
     c_for = _ function {
+        id : .c_for,
         code : (.ctx : .args) : _ do [
             [.init, .condition, .next, .body] = .args,
-            .ctx ; eval _ do [
+            .ctx which _ apply _ do [
                 .init,
                 .condition loop [
                     .body,
@@ -20,6 +21,7 @@ _ do [
             ],
         ],
     },
+    .adapter@c_for export form, 
     _ c_for [[i = 1, sum = 0], i <= 10, i = i + 1, sum = sum + i],
     sum
 ]
