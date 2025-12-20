@@ -50,7 +50,7 @@ a.b.c
 
 ' abcdefghijklmnopqrstuvwxyz
 | ABCDEFGHIJKLMNOPQRSTUVWXYZ
-|(()[]{}<>\|/'"`^~-+=*_.,:;!?@#$%&
+|(()[]{}<>\|/'"`^*+=-~_.,:;!?@#$%&
 |)0123456789'
 ```
 
@@ -71,25 +71,25 @@ a.b.c
 ```air
 123
 0-123
-integer(-123)
+integer'-123'
 0X7f
 0-B1110
 ```
 
-**number**
+**decimal**
 
 ```air
 0.1
 0-0.1
-1.0E-1
-number(-0.1)
+0-E-12*3.456
+decimal'-0.1'
 ```
 
 **byte**
 
 ```air
-byte(B00001111)
-byte(X00ffff)
+byte'B00001111'
+byte'X00ffff'
 ```
 
 **pair**
