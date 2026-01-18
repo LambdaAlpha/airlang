@@ -103,7 +103,7 @@ byte'X00ffff'
 
 **配对**
 
-`first : second`
+`left : right`
 
 ```air
 a : 1
@@ -133,7 +133,7 @@ a : b : c
 
 - `_ function input`
 - `input function _`
-- `first function second`
+- `left function right`
 
 ```air
 _ not true
@@ -182,7 +182,7 @@ _ do [
 
 ### 配置
 
-配置是执行过程中的全局信息坏境，通过仅追加与局域覆盖等机制，兼顾了灵活性和可预测性。可通过 `import` 函数导入配置项，或通过 `export` 函数导出配置项，亦可通过 `with` 函数局域覆盖配置项。我们将基于配置机制实现模块管理、测试框架和异常处理等特性，并在初始配置中提供了原生函数和标准库。
+配置是执行过程中的全局信息坏境，通过仅追加与局域覆盖等机制，兼顾了灵活性和可预测性。可通过 `import` 函数导入配置项，或通过 `export` 函数导出配置项，亦可通过 `with` 函数局域覆盖配置项。我们将基于配置机制实现模块管理、测试框架和错误处理等特性，并在初始配置中提供了原生函数和标准库。
 
 ```air
 _ do [
@@ -194,12 +194,13 @@ _ do [
 
 ### 资源
 
-资源是执行过程中必需且消耗的稀缺实体，其中最核心的是执行时间与存储空间。可通过 `available_steps` 读取可用执行步数，或通过 `measure_steps` 测量实际执行步数，亦可通过 `limit_steps` 限制可用执行步数。我们将围绕这些基础能力逐步构建起资源管理框架，为人工智能等资源敏感型应用的开发提供必要的基础能力。
+资源是执行过程中必需且消耗的稀缺实体，其中最核心的是执行时间与存储空间。可通过 `get_steps` 读取可用执行步数，或通过 `measure_steps` 测量实际执行步数，亦可通过 `set_steps` 限制可用执行步数。我们将围绕这些基础能力逐步构建起资源管理框架，为人工智能等资源敏感型应用的开发提供必要的基础能力。
 
 ```air
 _ do [
-    .limit_steps set _ import _resource.limit_steps,
-    100 limit_steps _ data true loop []
+    .set_steps set _ import _resource.set_steps,
+    _ set_steps 100,
+    true loop []
 ]
 ```
 

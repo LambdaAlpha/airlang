@@ -104,7 +104,7 @@ byte'X00ffff'
 
 **pair**
 
-`first : second`
+`left : right`
 
 ```air
 a : 1
@@ -134,7 +134,7 @@ a : b : c
 
 - `_ function input`
 - `input function _`
-- `first function second`
+- `left function right`
 
 ```air
 _ not true
@@ -183,7 +183,7 @@ _ do [
 
 ### Configuration
 
-Configuration is the global information environment during execution. Through mechanisms like append-only and scoped override, it balances flexibility and predictability. Configuration items can be imported via the `import` function, exported via the `export` function, or locally overridden via the `with` function. We will implement features like module management, testing frameworks, and exception handling based on the configuration mechanism, and provide native functions and standard libraries in the initial configuration.
+Configuration is the global information environment during execution. Through mechanisms like append-only and scoped override, it balances flexibility and predictability. Configuration items can be imported via the `import` function, exported via the `export` function, or locally overridden via the `with` function. We will implement features like module management, testing frameworks, and error handling based on the configuration mechanism, and provide native functions and standard libraries in the initial configuration.
 
 ```air
 _ do [
@@ -195,12 +195,13 @@ _ do [
 
 ### Resources
 
-Resources are scarce, consumable entities required during execution, with the most critical being execution time and storage space. Available execution steps can be read via `available_steps`, measured via `measure_steps`, or limited via `limit_steps`. We will gradually build a resource management framework around these basic capabilities to provide essential foundational support for the development of resource-sensitive applications such as artificial intelligence.
+Resources are scarce, consumable entities required during execution, with the most critical being execution time and storage space. Available execution steps can be read via `get_steps`, measured via `measure_steps`, or limited via `set_steps`. We will gradually build a resource management framework around these basic capabilities to provide essential foundational support for the development of resource-sensitive applications such as artificial intelligence.
 
 ```air
 _ do [
-    .limit_steps set _ import _resource.limit_steps,
-    100 limit_steps _ data true loop []
+    .set_steps set _ import _resource.set_steps,
+    _ set_steps 100,
+    true loop []
 ]
 ```
 
