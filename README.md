@@ -12,16 +12,20 @@
 
 ### Minimalist Syntax
 
-Air's syntax is extremely concise. It only includes comments and 12 data types, with no semantic-specific syntax for control flows, functions, types, modules, etc. Its rules are very simple, using prefixes to avoid ambiguity, and it has only 5 keywords (`_`, `.`, `:`, `true`, `false`). This makes it highly suitable for configuration or data interchange.
+Air's syntax is extremely concise. It only includes comments and 13 data types, with no semantic-specific syntax for control flows, functions, types, modules, etc. Its rules are very simple, using prefixes to avoid ambiguity, and it has only 5 keywords (`_`, `.`, `:`, `true`, `false`). This makes it highly suitable for configuration or data interchange.
 
 **comment**
 
-`_(t1 t2 ... tn)`
+- `!(t1 t2 ... tn)`
+- `!'key'`
+- `!"text"`
+- `![l, i, s, t]`
+- `!{a : map}`
 
 ```air
-_("comment")
-[1, _(2, 3,) 4]
-{a : _(1, b :) 2}
+!"comment"
+[1, !(2, 3,) 4]
+{a : !(1, b :) 2}
 ```
 
 **unit**
@@ -94,12 +98,16 @@ byte'X00ffff'
 
 **cell**
 
-`.(v)`
+- `.(v)`
+- `.'key'`
+- `."text"`
+- `.[l, i, s, t]`
+- `.{a : map}`
 
 ```air
 .(true)
-.(value)
-.(.("data"))
+.('cell')
+.(.[.{a : .""}])
 ```
 
 **pair**
@@ -130,6 +138,20 @@ a : b : c
 {a, b, c}
 ```
 
+**quote**
+
+- `_(v)`
+- `_'key'`
+- `_"text"`
+- `_[l, i, s, t]`
+- `_{a : map}`
+
+```air
+_(true)
+_('quote')
+_(_[_{a : _""}])
+```
+
 **call**
 
 - `_ function input`
@@ -144,38 +166,40 @@ a and b or c
 
 ### Minimalist Semantics
 
-Air's evaluation rules are very concise, consisting of only four rules.
+Air's evaluation rules are very concise, consisting of only five rules.
 
 First, the evaluation rules for keys are as follows:
 
-1. `_a` ➔ `_a`
-2. `.a` ➔ `a`
-3. `:a` or `a` ➔ `v`, where `v` is the value bound to key `a` in the context
+1. `_a` ➔ `a`
+2. `.a` ➔ `.a`
+3. `a` ➔ `v`, where `v` is the value bound to key `a` in the context
 
-Second, the evaluation rule for calls is `_ f i` ➔ `o`, with the following steps:
+Second, the evaluation rule for quotes is `_(v)` ➔ `v`.
+
+Third, the evaluation rule for calls is `_ f i` ➔ `o`, with the following steps:
 
 1. `eval(f)` ➔ `vf`
-2. `if vf.raw_input then i else eval(i)` ➔ `vi`
+2. `eval(i)` ➔ `vi`
 3. `vf(vi)` ➔ `o`
 
-Third, the evaluation rules for cells, pairs, lists, and maps are as follows:
+Fourth, the evaluation rules for cells, pairs, lists, and maps are as follows:
 
 - `.(v)` ➔ `.(eval(v))`
 - `v1 : v2` ➔ `eval(v1) : eval(v2)`
 - `[v1, v2, ..., vn]` ➔ `[eval(v1), eval(v2), ..., eval(vn)]`
 - `{k1 : v1, k2 : v2, ..., kn : vn}` ➔ `{k1 : eval(v1), k2 : eval(v2), kn : eval(vn)}`
 
-Fourth, the evaluation rule for other values is `v` ➔ `v`.
+Fifth, the evaluation rule for other values is `v` ➔ `v`.
 
 ### Context
 
 The context is the local information environment during execution. In core semantics, the context can be accessed via keys, and functions also support sensing or updating the context. Variables in the context can be read via the `get` function, updated via the `set` function, or specified via the `which` function. Based on this capability of functions, we implement various control flow functions, including sequential execution `do`, conditional execution `test`, pattern matching `match`, loops `loop`, iteration `iterate`, etc. The most commonly used and essential core functions are provided in the initial context.
 
 ```air
-_ do [
-    .sum set 0,
-    100 iterate i : [
-        .sum set sum + i
+_ do _[
+    _sum set 0,
+    100 iterate _i : _[
+        _sum set sum + i
     ],
     sum
 ]
@@ -186,10 +210,10 @@ _ do [
 Configuration is the global information environment during execution. Through mechanisms like append-only and scoped override, it balances flexibility and predictability. Configuration items can be imported via the `import` function, exported via the `export` function, or locally overridden via the `with` function. We will implement features like module management, testing frameworks, and error handling based on the configuration mechanism, and provide native functions and standard libraries in the initial configuration.
 
 ```air
-_ do [
-    .push set _ import _list.push,
-    _list.add export push,
-    _list.append export push,
+_ do _[
+    _push set _ import .list.push,
+    .list.add export push,
+    .list.append export push,
 ]
 ```
 
@@ -198,8 +222,8 @@ _ do [
 Resources are scarce, consumable entities required during execution, with the most critical being execution time and storage space. Available execution steps can be read via `get_steps`, measured via `measure_steps`, or limited via `set_steps`. We will gradually build a resource management framework around these basic capabilities to provide essential foundational support for the development of resource-sensitive applications such as artificial intelligence.
 
 ```air
-_ do [
-    .set_steps set _ import _resource.set_steps,
+_ do _[
+    _set_steps set _ import .resource.set_steps,
     _ set_steps 100,
     true loop []
 ]
