@@ -30,18 +30,24 @@ Air's syntax is extremely concise. It only includes comments and 13 data types, 
 
 ```air
 >=
+➔ >=
 
 a.b.c
+➔ a.b.c
 
 '[0, 1, 2]'
+➔ [0, 1, 2]
 
-'^(X3f ' ^ sp)'
+'"a"'(this is a comment)[X3f ' " ) ( sp]"'a'"
+➔ "a"?'")( 'a'
 
-'abcdefghijklmnopqrstuvwxyz
-|_()[]{}<>\|/'"`^*+=-~_.,:;!?@#$%&
-|^sp 0 1 2 3 4 5 6 7 8 9
-|!this line is a comment
+'abcdefghijklmnopqrstuvwxyz'_
+|"()[]{}<>\|/'"_
+|'"`^*+=-~_.,:;!?@#$%&'_
+|(this is a comment)_
+|[sp 0 1 2 3 4 5 6 7 8 9]_
 |'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+➔ abcdefghijklmnopqrstuvwxyz()[]{}<>\|/'"`^*+=-~_.,:;!?@#$%& 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ
 ```
 
 **text**
@@ -50,17 +56,16 @@ a.b.c
 
 ```air
 "🜁: Alchemical Symbol For Air"
+➔ 🜁: Alchemical Symbol For Air
 
-"^(X1f701 " ^ sp ht cr lf)"
+"'a'"(this is a comment)[X1f701 ' " sp ht cr lf]'"a"'
+➔ 'a'🜁'" \t\r\n"a"
 
-    "
-    |_()[]{}<>\|/
-    | '"`^*+=-~_
-    | .,:;!?
-    | @#$%&
-    |^X1f701 " ^ sp ht cr lf
-    |!this line is a comment
-    |""
+    "()[]{}<>\|/'"_
+    |'"`^*+=-~_.,:;!?@#$%&'_
+    |(this is a comment)_
+    |[X1f701 ' " sp ht cr lf]
+➔ ()[]{}<>\|/'"`^*+=-~_.,:;!?@#$%&🜁'" \t\r\n
 ```
 
 **integer**
@@ -125,24 +130,24 @@ a : b : c
 **list**
 
 - `[v1, v2, ..., vn]`
-- `^[v1 v2 ... vn]` = `[v1, v2, ..., vn]`
+- `#[v1 v2 ... vn]` = `[v1, v2, ..., vn]`
 
 ```air
 [0, 1, 2]
 [., false, 0, '',]
-^[git commit --amend --no-edit]
+#[git commit --amend --no-edit]
 ```
 
 **map**
 
 - `{k1 : v1, k2 : v2, ... : ..., kn : vn}`
-- `^{k1 v1 k2 v2 ... ... kn vn}` = `{k1 : v1, k2 : v2, ... : ..., kn : vn}`
+- `#{k1 v1 k2 v2 ... ... kn vn}` = `{k1 : v1, k2 : v2, ... : ..., kn : vn}`
 
 ```air
 {a : 1, b : 2, c : 3}
 {a : 1, b : true, c : ' ',}
 {a, b, c}
-^{
+#{
     select *
     from book
     where (price > 100)
