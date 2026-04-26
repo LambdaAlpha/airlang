@@ -6,13 +6,13 @@
   A language is a consensus among programmers. The simpler the language, the stronger the consensus and the easier the code is to understand. Therefore, we strive to avoid unnecessary complexity. Based on this principle, we do not build in features such as modules, control flow, assignment, pattern matching, or type constructors into the language core.
 
 - **Universal**  
-  The broader a language's applicable scenarios, the higher the return on investment in learning it, and the better the interoperability between projects. Therefore, we aim to make the language adaptable to various goals and resource scales. Based on this principle, we provide users with the ability to manage context, configuration, and resources.
+  The broader a language's applicable scenarios, the higher the return on investment in learning it, and the better the interoperability between projects. Therefore, we aim to make the language adaptable to various goals and resource scales. Based on this principle, we provide users with the ability to manage context and configuration.
 
 ## Language Features
 
 ### Minimalist Syntax
 
-Air's syntax is extremely concise. It only includes comments and 13 data types, with no semantic-specific syntax for control flows, functions, types, modules, etc. Its rules are very simple, using prefixes to avoid ambiguity, and it has only 5 keywords (`_`, `.`, `:`, `true`, `false`). This makes it highly suitable for configuration or data interchange.
+Air's syntax is extremely concise. It only includes comments and 14 data types, with no semantic-specific syntax for control flows, functions, types, modules, etc. Its rules are very simple, using prefixes to avoid ambiguity, and it has only 6 keywords (`_`, `.`, `:`, `?`, `true`, `false`). This makes it highly suitable for configuration or data interchange.
 
 **unit**
 
@@ -38,7 +38,7 @@ a.b.c
 '[0, 1, 2]'
 ➔ [0, 1, 2]
 
-'"a"'(this is a comment)[X3f ' " ) ( sp]"'a'"
+'"a"'_(this is a comment)_[X3f ' " ) ( sp]_"'a'"
 ➔ "a"?'")( 'a'
 
 'abcdefghijklmnopqrstuvwxyz'_
@@ -58,7 +58,7 @@ a.b.c
 "🜁: Alchemical Symbol For Air"
 ➔ 🜁: Alchemical Symbol For Air
 
-"'a'"(this is a comment)[X1f701 ' " sp ht cr lf]'"a"'
+"'a'"_(this is a comment)_[X1f701 ' " sp ht cr lf]_'"a"'
 ➔ 'a'🜁'" \t\r\n"a"
 
     "()[]{}<>\|/'"_
@@ -181,6 +181,16 @@ _ not true
 a and b or c
 ```
 
+**solve**
+
+- `? function output`
+- `output function ?`
+
+```air
+? * 21
+true is_carmichael_number ?
+```
+
 **comment**
 
 - `!(t1 t2 ... tn)`
@@ -197,7 +207,7 @@ a and b or c
 
 ### Minimalist Semantics
 
-Air's evaluation rules are very concise, consisting of only five rules.
+Air's evaluation rules are very concise, consisting of only six rules.
 
 First, the evaluation rules for keys are as follows:
 
@@ -209,14 +219,16 @@ Second, the evaluation rule for quotes is `_(v)` ➔ `v`.
 
 Third, the evaluation rule for calls is `_ f i ➔ f'(i')`, where `x'` denotes the result of evaluating `x` (the same applies below).
 
-Fourth, the evaluation rules for cells, pairs, lists, and maps are as follows:
+Fourth, the evaluation rule for solving is `? f o` ➔ `i`, where `f'(i) = o'` is a fact in the configuration's fact database.
+
+Fifth, the evaluation rules for cells, pairs, lists, and maps are as follows:
 
 - `.(v)` ➔ `.(v')`
 - `v1 : v2` ➔ `v1' : v2'`
 - `[v1, v2, ..., vn]` ➔ `[v1', v2', ..., vn']`
 - `{k1 : v1, k2 : v2, ..., kn : vn}` ➔ `{k1 : v1', k2 : v2', kn : vn'}`
 
-Fifth, the evaluation rule for other values is `v` ➔ `v`.
+Sixth, the evaluation rule for other values is `v` ➔ `v`.
 
 ### Context
 
@@ -241,18 +253,6 @@ _ do _[
     _push set _ import .list.push,
     .list.add export push,
     .list.append export push,
-]
-```
-
-### Resources
-
-Resources are scarce, consumable entities required during execution, with the most critical being execution time and storage space. Available execution steps can be read via `get_steps`, measured via `measure_steps`, or limited via `set_steps`. We will gradually build a resource management framework around these basic capabilities to provide essential foundational support for the development of resource-sensitive applications such as artificial intelligence.
-
-```air
-_ do _[
-    _set_steps set _ import .resource.set_steps,
-    _ set_steps 100,
-    true loop []
 ]
 ```
 
