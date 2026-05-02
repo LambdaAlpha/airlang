@@ -2,17 +2,16 @@
 
 ## Design Goals
 
-- **Minimalist**  
-  A language is a consensus among programmers. The simpler the language, the stronger the consensus and the easier the code is to understand. Therefore, we strive to avoid unnecessary complexity. Based on this principle, we do not build in features such as modules, control flow, assignment, pattern matching, or type constructors into the language core.
-
 - **Universal**  
-  The broader a language's applicable scenarios, the higher the return on investment in learning it, and the better the interoperability between projects. Therefore, we aim to make the language adaptable to various goals and resource scales. Based on this principle, we provide users with the ability to manage context and configuration.
+  The boundaries of a programming language are the boundaries of a programmer's ability, so the language should be applicable to any need and should not self-limit.
+- **Reliable**  
+  Continuous error accumulation will eventually make a system unusable. Only reliable systems can develop sustainably, so the language should be able to prevent and manage errors.
+- **Lean**  
+  The common language among programmers should be easy to learn, understand, and use, so the language should avoid unnecessary complexity.
 
 ## Language Features
 
-### Minimalist Syntax
-
-Air's syntax is extremely concise. It only includes comments and 14 data types, with no semantic-specific syntax for control flows, functions, types, modules, etc. Its rules are very simple, using prefixes to avoid ambiguity, and it has only 6 keywords (`_`, `.`, `:`, `?`, `true`, `false`). This makes it highly suitable for configuration or data interchange.
+### Syntax
 
 **unit**
 
@@ -205,30 +204,45 @@ true is_carmichael_number ?
 {a : !(1, b :) 2}
 ```
 
-### Minimalist Semantics
+### Semantics
 
-Air's evaluation rules are very concise, consisting of only six rules.
-
-First, the evaluation rules for keys are as follows:
+**key**
 
 1. `_a` ➔ `a`
 2. `.a` ➔ `.a`
 3. `a` ➔ `v`, where `v` is the value bound to key `a` in the context
 
-Second, the evaluation rule for quotes is `_(v)` ➔ `v`.
+**quote**
 
-Third, the evaluation rule for calls is `_ f i ➔ f'(i')`, where `x'` denotes the result of evaluating `x` (the same applies below).
+`_(v)` ➔ `v`
 
-Fourth, the evaluation rule for solving is `? f o` ➔ `i`, where `f'(i) = o'` is a fact in the configuration's fact database.
+**call**
 
-Fifth, the evaluation rules for cells, pairs, lists, and maps are as follows:
+`_ f i` ➔ `f'(i')`, where `x'` denotes the result of evaluating `x` (the same applies below)
 
-- `.(v)` ➔ `.(v')`
-- `v1 : v2` ➔ `v1' : v2'`
-- `[v1, v2, ..., vn]` ➔ `[v1', v2', ..., vn']`
-- `{k1 : v1, k2 : v2, ..., kn : vn}` ➔ `{k1 : v1', k2 : v2', kn : vn'}`
+**solve**
 
-Sixth, the evaluation rule for other values is `v` ➔ `v`.
+`? f o` ➔ `i`, where `f'(i) = o'` is a fact in the configuration's fact database
+
+**cell**,
+
+`.(v)` ➔ `.(v')`
+
+**pair**
+
+`v1 : v2` ➔ `v1' : v2'`
+
+**list**
+
+`[v1, v2, ..., vn]` ➔ `[v1', v2', ..., vn']`
+
+**map**
+
+`{k1 : v1, k2 : v2, ..., kn : vn}` ➔ `{k1 : v1', k2 : v2', kn : vn'}`
+
+**others**
+
+`v` ➔ `v`
 
 ### Context
 
@@ -246,31 +260,90 @@ _ do _[
 
 ### Configuration
 
-Configuration is the global information environment during execution. Through mechanisms like append-only and scoped override, it balances flexibility and predictability. Configuration items can be imported via the `import` function, exported via the `export` function, or locally overridden via the `with` function. We will implement features like module management, testing frameworks, and error handling based on the configuration mechanism, and provide native functions and standard libraries in the initial configuration.
+Configuration is the global information environment during execution. Through mechanisms like append-only and scoped override, it balances flexibility and predictability. Configuration items can be imported via the `import` function, exported via the `export` function, or locally overridden via the `with` function. We will implement features like module management, task management, error handling, and testing frameworks based on the configuration mechanism, and provide native functions and standard libraries in the initial configuration.
+
+```air
+_ with {
+    .decimal.rounding.mode : .half_even,
+    .decimal.rounding.precision : 28,
+} : _(_ do _[
+    _/ set _ import .decimal.divide,
+    281366922235. / 230.
+])
+```
+
+### Error Management
+
+Bugs are unexpected errors by programmers. Since we cannot predict the program state when a bug occurs, such errors are essentially unrecoverable. Air allows you to manage tasks per configuration, using `assert` to check the current state, or `abort` to terminate the current task when a program bug is detected.
 
 ```air
 _ do _[
-    _push set _ import .list.push,
-    .list.add export push,
-    .list.append export push,
+    _any set _ import .value.any,
+    _a set _ any .integer,
+    _b set a * 1,
+    (a <> b) test _[
+        _ abort .
+    ],
+    _ assert 1 = b / a
+]
+```
+
+### Solve
+
+**Solve** is used to express the need to solve a problem. For example, "find an assignment that makes a Boolean formula true" is a need to solve a problem, where the "Boolean formula" is a function `formula` whose expected output is `true`, which can be expressed as a solve `? formula true`. The solve mechanism allows any need to be expressed formally, without caring about the specific implementation. However, the solve mechanism is not magic and cannot automatically solve problems; it still requires the implementer of the need to actually solve the problem.
+
+```air
+_ do _[
+    _formula set _ function {
+        code : _(. : i) : _(_ do _[
+            _[a1, a2, a3, a4, a5] := i,
+            ((_ not a1) or a3) and
+            (a1 or a2) and
+            (_ not a2) and
+            (a4 or a5) and
+            ((_ not a4) or _ not a5)
+        ]),
+        prelude : {
+            := : _ import .context.represent,
+            do : do,
+            not : not,
+            and : and,
+            or : or,
+        },
+    },
+    formula fact [true, false, true, true, false],
+    ? formula true
 ]
 ```
 
 ## Roadmap
 
-1. **Enhance Language Expressiveness**  
-   Focus on expanding core expressiveness to lay the foundation for subsequent capabilities.
+Many goals do not yet have clear design proposals. The following directions will be explored in the future:
 
-2. **Introduce Abstract Semantics and Program Optimization Framework**  
-   Introduce an abstract semantics model based on "concrete value + abstract constraint", enabling optimization of values within the same class while maintaining semantic equivalence, and build a general program optimization framework based on this.
+- Logical framework, paraconsistent logic, and error management
+- Non-computable semantics based on solving
+- Program analysis and optimization based on abstract interpretation theory
+- Algorithm complexity analysis and resource management
+- Concurrency model
 
-3. **Develop Intelligent Optimization Algorithms**  
-   Develop automated, intelligent optimization algorithms based on abstract semantics to systematically optimize program resource usage.
+## Installation and Running
 
-## Installation
+Install:
 
 ```bash
 cargo install airlang_bin
+```
+
+Run the interactive interpreter:
+
+```bash
+airlang_bin
+```
+
+Run a file:
+
+```bash
+airlang_bin path/to/your/file.air
 ```
 
 ## License
