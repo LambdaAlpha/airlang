@@ -135,3 +135,19 @@ a f _ g b
 _ f a g b
 _ f _ g a
 ```
+
+## Solve
+
+- `? f a`: `f` is the function, `a` is the output
+- `a f ?`: `f` is the function, `a` is the output
+
+Examples:
+
+```air
+? a b
+? a ? b c
+? a []
+? a b : c
+a f ? g b
+? f a g b
+```
