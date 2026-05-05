@@ -2,6 +2,8 @@
 
 In the initial context, key-value bindings are mutable.
 
+## Primitive Function
+
 - `not`: .bit.not
 - `and`: .bit.and
 - `or`: .bit.or
@@ -28,6 +30,7 @@ In the initial context, key-value bindings are mutable.
 - `move`: .map.move
 - `quote`: .quote.make
 - `call`: .call.make
+- `solve`: .solve.make
 - `exist`: .config.exist
 - `import`: .config.import
 - `export`: .config.export
@@ -35,19 +38,22 @@ In the initial context, key-value bindings are mutable.
 - `function`: .function.make
 - `get`: .context.get
 - `set`: .context.set
-- `represent`: .context.represent
-- `which`: .context.which
+- `is`: .context.is
+- `let`: .context.let
 - `do`: .control.do
 - `test`: .control.test
 - `switch`: .control.switch
 - `match`: .control.match
 - `loop`: .control.loop
 - `iterate`: .control.iterate
-- `get_type`: .value.get_type
 - `=`: .value.equal
 - `abort`: .error.abort,
 - `assert`: .error.assert,
 - `eval`: .language.semantics.eval
+
+## Composite Function
+
+- `type`: .value.get_type.context.let
 
 ## Other
 

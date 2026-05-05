@@ -80,7 +80,7 @@ Input: free
 
 Gets cfg.
 
-## .config.where
+## .config.let
 
 Type: function
 

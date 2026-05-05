@@ -20,7 +20,7 @@ Input: relevant
 
 input should be `key : value`, binds `key` to `value`.
 
-## .context.represent
+## .context.is
 
 Type: function
 
@@ -63,7 +63,7 @@ Input: free
 
 Outputs the current context.
 
-## .context.which
+## .context.let
 
 Type: function
 
@@ -72,3 +72,15 @@ Context: mutable
 Input: relevant
 
 input should be `c : f : i`, looks up the context `c1` from ctx using key `c`, calls `f` with `c1` as context and `i` as input.
+
+## .context.let.bind
+
+Type: function
+
+Context: free
+
+Input: relevant
+
+input should be a function, outputs a function `g` such that `ctx g input` is equivalent to `ctx context.let g : input`.
+
+Most context read/write functions export a bind function, whose key is the original function's key + `.context.let`.
