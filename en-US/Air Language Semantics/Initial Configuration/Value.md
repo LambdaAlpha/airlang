@@ -4,8 +4,6 @@
 
 Context: free
 
-Input: relevant
-
 If input is unit, outputs an arbitrary value.
 If input is `.syntax`, outputs a syntax value.
 If input is a key representing a type (see `type`), outputs an arbitrary value of that type.
@@ -43,7 +41,5 @@ Outputs a key representing ctx's type.
 Type: function
 
 Context: constant
-
-Input: relevant
 
 input should be a pair, compares the left value `v1` and right value `v2` for equality. Functions and links are compared by copy identity; other built-in types use structural equality.

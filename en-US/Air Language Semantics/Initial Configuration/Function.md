@@ -6,8 +6,6 @@ Type: function
 
 Context: free
 
-Input: relevant
-
 Constructs a function.
 
 input should be a map
@@ -21,8 +19,6 @@ input should be a map
 Type: function
 
 Context: free
-
-Input: relevant
 
 Represents a function. Outputs a map
 
@@ -48,7 +44,7 @@ Context: constant
 
 Input: free
 
-ctx should be a function, outputs whether ctx is context-constant.
+ctx should be a function, outputs whether ctx is context-constant. If default, outputs unit.
 
 ## .function.is_input_free
 

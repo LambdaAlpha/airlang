@@ -4,10 +4,6 @@
 
 Type: function
 
-Context: mutable
-
-Input: relevant
-
 Evaluates input.
 
 ## .language.syntax.parse
@@ -15,8 +11,6 @@ Evaluates input.
 Type: function
 
 Context: free
-
-Input: relevant
 
 input should be a text, parses input using Air syntax into a value `v`, returns `.(v)`.
 

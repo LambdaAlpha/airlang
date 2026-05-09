@@ -8,8 +8,6 @@ Type: function
 
 Context: free
 
-Input: relevant
-
 input should be `func : input`, calls `func` with `input`, records the input and output to the fact database.
 
 ## .fact.call
@@ -17,8 +15,6 @@ input should be `func : input`, calls `func` with `input`, records the input and
 Type: function
 
 Context: free
-
-Input: relevant
 
 input should be `func : input`, queries `func(input)` from the fact database. If found, returns the output wrapped in a cell; otherwise returns unit.
 
@@ -28,8 +24,6 @@ Type: function
 
 Context: free
 
-Input: relevant
-
 input should be `func : output`, reverse-solves for an input such that `func(input) = output` from the fact database. If found, returns the input wrapped in a cell; otherwise returns unit.
 
 ## .fact.exist
@@ -37,7 +31,5 @@ input should be `func : output`, reverse-solves for an input such that `func(inp
 Type: function
 
 Context: free
-
-Input: relevant
 
 input should be `func : input : output`, checks whether the fact `func(input) = output` exists in the fact database. Returns a bit.

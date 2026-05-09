@@ -6,8 +6,6 @@ Type: function
 
 Context: free
 
-Input: relevant
-
 - If input is true, output false
 - If input is false, output true
 
@@ -16,8 +14,6 @@ Input: relevant
 Type: function
 
 Context: free
-
-Input: relevant
 
 input should be `b1 : b2`, where `b1` and `b2` are bits
 
@@ -30,8 +26,6 @@ Type: function
 
 Context: free
 
-Input: relevant
-
 input should be `b1 : b2`, where `b1` and `b2` are bits
 
 - If `b1` is true or `b2` is true, output true
@@ -42,8 +36,6 @@ input should be `b1 : b2`, where `b1` and `b2` are bits
 Type: function
 
 Context: free
-
-Input: relevant
 
 input should be `b1 : b2`, where `b1` and `b2` are bits
 
@@ -56,8 +48,6 @@ input should be `b1 : b2`, where `b1` and `b2` are bits
 Type: function
 
 Context: free
-
-Input: relevant
 
 input should be `b1 : b2`, where `b1` and `b2` are bits
 

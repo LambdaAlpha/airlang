@@ -16,8 +16,6 @@ Type: function
 
 Context: mutable
 
-Input: relevant
-
 input should be a byte, ctx should be a byte, appends input to ctx.
 
 ## .byte.join
@@ -25,7 +23,5 @@ input should be a byte, ctx should be a byte, appends input to ctx.
 Type: function
 
 Context: free
-
-Input: relevant
 
 input should be a list of bytes, joins input into a byte.

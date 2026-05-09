@@ -6,8 +6,6 @@ Type: function
 
 Context: free
 
-Input: relevant
-
 input should be `a : b`, where `a` and `b` are integers. Outputs the sum.
 
 ## .integer.subtract
@@ -15,8 +13,6 @@ input should be `a : b`, where `a` and `b` are integers. Outputs the sum.
 Type: function
 
 Context: free
-
-Input: relevant
 
 input should be `a : b`, where `a` and `b` are integers. Outputs the difference.
 
@@ -26,8 +22,6 @@ Type: function
 
 Context: free
 
-Input: relevant
-
 input should be `a : b`, where `a` and `b` are integers. Outputs the product.
 
 ## .integer.divide
@@ -35,8 +29,6 @@ input should be `a : b`, where `a` and `b` are integers. Outputs the product.
 Type: function
 
 Context: free
-
-Input: relevant
 
 input should be `a : b`, where `a` and `b` are integers. Outputs the quotient as an integer.
 
@@ -46,8 +38,6 @@ Type: function
 
 Context: free
 
-Input: relevant
-
 input should be `a : b`, where `a` and `b` are integers. Outputs `a` mod `b`.
 
 ## .integer.divide_remainder
@@ -55,8 +45,6 @@ input should be `a : b`, where `a` and `b` are integers. Outputs `a` mod `b`.
 Type: function
 
 Context: free
-
-Input: relevant
 
 input should be `a : b`, where `a` and `b` are integers. Outputs `(a / b) : (a % b)`.
 
@@ -66,8 +54,6 @@ Type: function
 
 Context: free
 
-Input: relevant
-
 input should be `a : b`, where `a` and `b` are integers. Outputs whether `a` is less than `b`.
 
 ## .integer.less_equal
@@ -75,8 +61,6 @@ input should be `a : b`, where `a` and `b` are integers. Outputs whether `a` is 
 Type: function
 
 Context: free
-
-Input: relevant
 
 input should be `a : b`, where `a` and `b` are integers. Outputs whether `a` is less than or equal to `b`.
 
@@ -86,8 +70,6 @@ Type: function
 
 Context: free
 
-Input: relevant
-
 input should be `a : b`, where `a` and `b` are integers. Outputs whether `a` is greater than `b`.
 
 ## .integer.greater_equal
@@ -96,8 +78,6 @@ Type: function
 
 Context: free
 
-Input: relevant
-
 input should be `a : b`, where `a` and `b` are integers. Outputs whether `a` is greater than or equal to `b`.
 
 ## .integer.less_greater
@@ -105,7 +85,5 @@ input should be `a : b`, where `a` and `b` are integers. Outputs whether `a` is 
 Type: function
 
 Context: free
-
-Input: relevant
 
 input should be `a : b`, where `a` and `b` are integers. Outputs whether `a` is less than or greater than `b`.

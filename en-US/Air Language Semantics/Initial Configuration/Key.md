@@ -6,8 +6,6 @@ Type: function
 
 Context: free
 
-Input: relevant
-
 input should be a valid key string, converts input to a key.
 
 ## .key.into_text
@@ -15,8 +13,6 @@ input should be a valid key string, converts input to a key.
 Type: function
 
 Context: free
-
-Input: relevant
 
 input should be a key, converts input to a text.
 
@@ -35,7 +31,5 @@ ctx should be a key, outputs ctx's length.
 Type: function
 
 Context: free
-
-Input: relevant
 
 input should be a list of keys, joins input into a key.

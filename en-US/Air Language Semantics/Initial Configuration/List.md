@@ -16,8 +16,6 @@ Type: function
 
 Context: mutable
 
-Input: relevant
-
 input should be `i : v`, ctx should be a list, sets ctx's `i`-th item to `v`, outputs the `i`-th item's original value.
 
 ## .list.set_many
@@ -25,8 +23,6 @@ input should be `i : v`, ctx should be a list, sets ctx's `i`-th item to `v`, ou
 Type: function
 
 Context: mutable
-
-Input: relevant
 
 input should be `i : vs`, where `len` is the length of the list `vs`, ctx should be a list, sets ctx's items from `i` through `i + len - 1` to `vs`, outputs a list of the replaced items' original values.
 
@@ -36,8 +32,6 @@ Type: function
 
 Context: constant
 
-Input: relevant
-
 input should be an integer `i`, ctx should be a list, outputs ctx's `i`-th item's value.
 
 ## .list.get_many
@@ -45,8 +39,6 @@ input should be an integer `i`, ctx should be a list, outputs ctx's `i`-th item'
 Type: function
 
 Context: constant
-
-Input: relevant
 
 input should be a pair `begin : end`, ctx should be a list.
 
@@ -60,8 +52,6 @@ Type: function
 
 Context: mutable
 
-Input: relevant
-
 input should be `i : v`, ctx should be a list, inserts `v` after ctx's `i`-th item.
 
 ## .list.insert_many
@@ -69,8 +59,6 @@ input should be `i : v`, ctx should be a list, inserts `v` after ctx's `i`-th it
 Type: function
 
 Context: mutable
-
-Input: relevant
 
 input should be `i : vs`, ctx should be a list, inserts all elements of the list `vs` after ctx's `i`-th item.
 
@@ -80,8 +68,6 @@ Type: function
 
 Context: mutable
 
-Input: relevant
-
 input should be an integer `i`, ctx should be a list, removes and outputs ctx's `i`-th item.
 
 ## .list.remove_many
@@ -89,8 +75,6 @@ input should be an integer `i`, ctx should be a list, removes and outputs ctx's 
 Type: function
 
 Context: mutable
-
-Input: relevant
 
 input should be a pair `begin : end`, ctx should be a list.
 
@@ -104,8 +88,6 @@ Type: function
 
 Context: mutable
 
-Input: relevant
-
 ctx should be a list, inserts input at the end of ctx.
 
 ## .list.push_many
@@ -113,8 +95,6 @@ ctx should be a list, inserts input at the end of ctx.
 Type: function
 
 Context: mutable
-
-Input: relevant
 
 ctx should be a list, input should be a list, inserts all elements of input at the end of ctx.
 
@@ -124,8 +104,6 @@ Type: function
 
 Context: mutable
 
-Input: relevant
-
 ctx should be a list, removes 1 element from the end of ctx and returns it.
 
 ## .list.pop_many
@@ -133,8 +111,6 @@ ctx should be a list, removes 1 element from the end of ctx and returns it.
 Type: function
 
 Context: mutable
-
-Input: relevant
 
 ctx should be a list, removes input elements from the end of ctx and returns them as a list.
 

@@ -6,8 +6,6 @@ Type: function
 
 Context: free
 
-Input: relevant
-
 input should be a valid UTF-8 encoded byte, converts input to text.
 
 ## .text.into_utf8
@@ -15,8 +13,6 @@ input should be a valid UTF-8 encoded byte, converts input to text.
 Type: function
 
 Context: free
-
-Input: relevant
 
 input should be a text, converts input to a UTF-8 encoded byte.
 
@@ -36,8 +32,6 @@ Type: function
 
 Context: mutable
 
-Input: relevant
-
 input should be a text, ctx should be a text, appends input to ctx.
 
 ## .text.join
@@ -45,7 +39,5 @@ input should be a text, ctx should be a text, appends input to ctx.
 Type: function
 
 Context: free
-
-Input: relevant
 
 input should be a list of texts, joins input into a text.

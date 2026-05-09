@@ -16,6 +16,4 @@ Type: function
 
 Context: mutable
 
-Input: relevant
-
 ctx should be a cell, sets ctx's value to input, outputs ctx's original value.

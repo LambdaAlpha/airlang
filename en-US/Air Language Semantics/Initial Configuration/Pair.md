@@ -16,8 +16,6 @@ Type: function
 
 Context: mutable
 
-Input: relevant
-
 ctx should be a pair, sets ctx's left value to input, outputs ctx's original left value.
 
 ## .pair.get_right
@@ -35,7 +33,5 @@ ctx should be a pair, outputs ctx's right value.
 Type: function
 
 Context: mutable
-
-Input: relevant
 
 ctx should be a pair, sets ctx's right value to input, outputs ctx's original right value.

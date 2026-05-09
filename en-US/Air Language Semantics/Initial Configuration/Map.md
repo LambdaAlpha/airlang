@@ -76,8 +76,6 @@ Type: function
 
 Context: constant
 
-Input: relevant
-
 input should be a key, ctx should be a map, outputs whether ctx contains input.
 
 ## .map.contain_all
@@ -85,8 +83,6 @@ input should be a key, ctx should be a map, outputs whether ctx contains input.
 Type: function
 
 Context: constant
-
-Input: relevant
 
 input should be a list, ctx should be a map, outputs whether ctx contains all keys in input.
 
@@ -96,8 +92,6 @@ Type: function
 
 Context: constant
 
-Input: relevant
-
 input should be a list, ctx should be a map, outputs whether ctx contains any key in input.
 
 ## .map.set
@@ -105,8 +99,6 @@ input should be a list, ctx should be a map, outputs whether ctx contains any ke
 Type: function
 
 Context: mutable
-
-Input: relevant
 
 input should be `k : v`, ctx should be a map, sets the value bound to key `k` in ctx to `v`, outputs a cell containing the original bound value.
 
@@ -116,8 +108,6 @@ Type: function
 
 Context: mutable
 
-Input: relevant
-
 input should be a map, ctx should be a map, sets the key-value pairs from input into ctx, outputs a map of these keys' original values in ctx.
 
 ## .map.get
@@ -125,8 +115,6 @@ input should be a map, ctx should be a map, sets the key-value pairs from input 
 Type: function
 
 Context: constant
-
-Input: relevant
 
 input should be a key, ctx should be a map, outputs a cell containing the value bound to input in ctx.
 
@@ -136,8 +124,6 @@ Type: function
 
 Context: constant
 
-Input: relevant
-
 input should be a list of keys, ctx should be a map, outputs a map of the values bound to the keys in input within ctx.
 
 ## .map.remove
@@ -145,8 +131,6 @@ input should be a list of keys, ctx should be a map, outputs a map of the values
 Type: function
 
 Context: mutable
-
-Input: relevant
 
 input should be a key, ctx should be a map, removes and outputs a cell containing the value bound to input in ctx.
 
@@ -156,8 +140,6 @@ Type: function
 
 Context: mutable
 
-Input: relevant
-
 input should be a list of keys, ctx should be a map, removes and outputs a map of the values bound to the keys in input within ctx.
 
 ## .map.move
@@ -165,8 +147,6 @@ input should be a list of keys, ctx should be a map, removes and outputs a map o
 Type: function
 
 Context: mutable
-
-Input: relevant
 
 input should be a key, ctx should be a map, removes and outputs the value bound to input in ctx.
 
@@ -186,8 +166,6 @@ Type: function
 
 Context: free
 
-Input: relevant
-
 input should be a list of key-value pairs, constructs a map from input.
 
 ## .map.make_set
@@ -195,7 +173,5 @@ input should be a list of key-value pairs, constructs a map from input.
 Type: function
 
 Context: free
-
-Input: relevant
 
 input should be a list of keys, constructs a map from input with all values set to unit.

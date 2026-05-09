@@ -2,9 +2,11 @@
 
 The function type represents a function.
 
-## Context Awareness
+## Context
 
-Functions are divided into context-free, context-constant, and context-mutable functions.
+### Default
+
+By default, functions can access the context. Attempting to modify the context in a constant context causes an abort.
 
 ### Free
 
@@ -16,11 +18,17 @@ A context-constant function can read the context but does not modify it.
 
 ### Mutable
 
-A context-mutable function can both read and modify the context.
+A context-mutable function can both read and modify the context. Calling a context-mutable function in a constant context causes an abort.
 
-## Input Awareness
+## Input
 
-Functions are divided into input-free and input-relevant functions.
+### Default
+
+By default, functions can access input.
+
+### Free
+
+An input-free function does not read input.
 
 ## Implementation
 

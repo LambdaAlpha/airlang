@@ -4,10 +4,6 @@
 
 Type: function
 
-Context: mutable
-
-Input: relevant
-
 input should be a list, executes the elements `si` of input in order, outputs the evaluation result of the last element.
 
 - If `si` is a call `_ .try i`, evaluate `i` to obtain `c`. If `c` is `.(v)`, stop evaluating subsequent elements and output `v`
@@ -17,10 +13,6 @@ input should be a list, executes the elements `si` of input in order, outputs th
 
 Type: function
 
-Context: mutable
-
-Input: relevant
-
 input should be `condition : branches`, `branches` should be `branch1` or `branch1 : branch2`
 
 - If `condition` is true, execute `branch1` and output the result (execution follows the `do` pattern)
@@ -29,10 +21,6 @@ input should be `condition : branches`, `branches` should be `branch1` or `branc
 ## .control.switch
 
 Type: function
-
-Context: mutable
-
-Input: relevant
 
 input should be `value : branches`
 
@@ -45,10 +33,6 @@ input should be `value : branches`
 
 Type: function
 
-Context: mutable
-
-Input: relevant
-
 input should be `value : list`
 
 - Match each list item `pattern : body`'s `pattern` against `value` one by one. If the match succeeds, apply bindings, execute `body`, and output the result (execution follows the `do` pattern)
@@ -56,10 +40,6 @@ input should be `value : list`
 ## .control.loop
 
 Type: function
-
-Context: mutable
-
-Input: relevant
 
 input should be `condition : body`
 
@@ -74,8 +54,6 @@ input should be `condition : body`
 Type: function
 
 Context: mutable
-
-Input: relevant
 
 input should be `value : name : body`. If `value` is of the following types, iterate over `value`, bind the corresponding value to `name`, then execute `body` (execution follows the `do` pattern). If the result is `.(v)`, output `v`; otherwise continue iterating.
 

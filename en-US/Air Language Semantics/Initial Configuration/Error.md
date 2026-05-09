@@ -27,8 +27,6 @@ Type: function
 
 Context: free
 
-Input: relevant
-
 input should be a bit, if false, aborts the current config's code execution.
 
 ## .error.is_aborted

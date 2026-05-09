@@ -6,8 +6,6 @@ Type: function
 
 Context: constant
 
-Input: relevant
-
 input should be a key, outputs the value bound to input.
 
 ## .context.set
@@ -16,17 +14,19 @@ Type: function
 
 Context: mutable
 
-Input: relevant
-
 input should be `key : value`, binds `key` to `value`.
+
+## .context.is_constant
+
+Type: function
+
+Returns whether the context is constant.
 
 ## .context.is
 
 Type: function
 
 Context: mutable
-
-Input: relevant
 
 Pattern matching and assignment. Matches a single pattern; if the match succeeds, the bindings are applied.
 
@@ -67,10 +67,6 @@ Outputs the current context.
 
 Type: function
 
-Context: mutable
-
-Input: relevant
-
 input should be `c : f : i`, looks up the context `c1` from ctx using key `c`, calls `f` with `c1` as context and `i` as input.
 
 ## .context.let.bind
@@ -78,8 +74,6 @@ input should be `c : f : i`, looks up the context `c1` from ctx using key `c`, c
 Type: function
 
 Context: free
-
-Input: relevant
 
 input should be a function, outputs a function `g` such that `ctx g input` is equivalent to `ctx context.let g : input`.
 

@@ -6,8 +6,6 @@ Type: function
 
 Context: free
 
-Input: relevant
-
 Creates a link whose value is input.
 
 ## .link.make_constant
@@ -15,8 +13,6 @@ Creates a link whose value is input.
 Type: function
 
 Context: free
-
-Input: relevant
 
 Creates a constant link whose value is input.
 
@@ -26,8 +22,6 @@ Type: function
 
 Context: free
 
-Input: relevant
-
 input should be a link, outputs whether input is constant.
 
 ## .link.is_available
@@ -35,8 +29,6 @@ input should be a link, outputs whether input is constant.
 Type: function
 
 Context: free
-
-Input: relevant
 
 input should be a link, outputs whether input is currently available.
 
@@ -46,8 +38,6 @@ Type: function
 
 Context: constant
 
-Input: relevant
-
 input should be a link, outputs input's id. Links with equal ids are equal, and vice versa.
 
 ## .link.let
@@ -56,8 +46,6 @@ Type: function
 
 Context: free
 
-Input: relevant
-
 input should be `link : f : i`, calls `f` with the link's value as context and `i` as input.
 
 ## .link.let.bind
@@ -65,8 +53,6 @@ input should be `link : f : i`, calls `f` with the link's value as context and `
 Type: function
 
 Context: free
-
-Input: relevant
 
 input should be a function, outputs a function `g` such that `ctx g input` is equivalent to `ctx link.let g : input`.
 

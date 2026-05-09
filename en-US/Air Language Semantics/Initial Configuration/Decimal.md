@@ -25,8 +25,6 @@ Type: function
 
 Context: free
 
-Input: relevant
-
 input should be `a : b`, where `a` and `b` are decimals. Outputs the sum.
 
 ## .decimal.subtract
@@ -34,8 +32,6 @@ input should be `a : b`, where `a` and `b` are decimals. Outputs the sum.
 Type: function
 
 Context: free
-
-Input: relevant
 
 input should be `a : b`, where `a` and `b` are decimals. Outputs the difference.
 
@@ -45,8 +41,6 @@ Type: function
 
 Context: free
 
-Input: relevant
-
 input should be `a : b`, where `a` and `b` are decimals. Outputs the product.
 
 ## .decimal.divide
@@ -54,8 +48,6 @@ input should be `a : b`, where `a` and `b` are decimals. Outputs the product.
 Type: function
 
 Context: free
-
-Input: relevant
 
 input should be `a : b`, where `a` and `b` are decimals. Outputs the quotient as a decimal.
 
@@ -65,8 +57,6 @@ Type: function
 
 Context: free
 
-Input: relevant
-
 input should be `a : b`, where `a` and `b` are decimals. Outputs whether `a` is less than `b`.
 
 ## .decimal.less_equal
@@ -74,8 +64,6 @@ input should be `a : b`, where `a` and `b` are decimals. Outputs whether `a` is 
 Type: function
 
 Context: free
-
-Input: relevant
 
 input should be `a : b`, where `a` and `b` are decimals. Outputs whether `a` is less than or equal to `b`.
 
@@ -85,8 +73,6 @@ Type: function
 
 Context: free
 
-Input: relevant
-
 input should be `a : b`, where `a` and `b` are decimals. Outputs whether `a` is greater than `b`.
 
 ## .decimal.greater_equal
@@ -95,8 +81,6 @@ Type: function
 
 Context: free
 
-Input: relevant
-
 input should be `a : b`, where `a` and `b` are decimals. Outputs whether `a` is greater than or equal to `b`.
 
 ## .decimal.less_greater
@@ -104,7 +88,5 @@ input should be `a : b`, where `a` and `b` are decimals. Outputs whether `a` is 
 Type: function
 
 Context: free
-
-Input: relevant
 
 input should be `a : b`, where `a` and `b` are decimals. Outputs whether `a` is less than or greater than `b`.
