@@ -76,7 +76,7 @@ The initial config is provided by the language.
 
 The initial config contains important information and primitive functions.
 
-[Initial Configuration](./Air%20Language%20Semantics/Initial%20Configuration.md)
+[Initial Configuration](./Air%20Language%20Initial%20Configuration.md)
 
 ### Initial Context
 
@@ -84,7 +84,7 @@ The initial context is provided by `.prelude` in the initial config.
 
 The initial context contains a small number of important or commonly used values.
 
-[Initial Context](./Air%20Language%20Semantics/Initial%20Configuration/Initial%20Context.md)
+[Initial Context](./Air%20Language%20Initial%20Configuration/Initial%20Context.md)
 
 ### Initial Function
 
