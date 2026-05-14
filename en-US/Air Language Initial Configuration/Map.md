@@ -142,14 +142,6 @@ Context: mutable
 
 input should be a list of keys, ctx should be a map, removes and outputs a map of the values bound to the keys in input within ctx.
 
-## .map.move
-
-Type: function
-
-Context: mutable
-
-input should be a key, ctx should be a map, removes and outputs the value bound to input in ctx.
-
 ## .map.clear
 
 Type: function

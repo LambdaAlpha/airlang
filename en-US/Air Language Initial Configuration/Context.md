@@ -6,7 +6,15 @@ Type: function
 
 Context: constant
 
-input should be a key, outputs the value bound to input.
+Outputs the value bound to input.
+
+## .context.take
+
+Type: function
+
+Context: mutable
+
+Outputs the value bound to input, sets input to be bound to unit.
 
 ## .context.set
 
