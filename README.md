@@ -24,8 +24,8 @@
 
 **key**
 
-- `'key'`
-- `key`
+- `key'xxx'`
+- `xxx`
 
 ```air
 >=
@@ -34,36 +34,37 @@
 a.b.c
 ➔ a.b.c
 
-'[0, 1, 2]'
+key'[0, 1, 2]'
 ➔ [0, 1, 2]
 
-'"a"'_(this is a comment)_[X3f ' " ) ( sp]_"'a'"
+key'"a"'_(this is a comment)_[X3f ' " ) ( sp]_"'a'"
 ➔ "a"?'")( 'a'
 
-'abcdefghijklmnopqrstuvwxyz'_
-|"()[]{}<>\|/'"_
-|'"`^*+=-~_.,:;!?@#$%&'_
-|(this is a comment)_
-|[sp 0 1 2 3 4 5 6 7 8 9]_
-|'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+key'abcdefghijklmnopqrstuvwxyz'_
+"()[]{}<>\|/'"_
+'"`^*+=-~_.,:;!?@#$%&'_
+(this is a comment)_
+[sp 0 1 2 3 4 5 6 7 8 9]_
+'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 ➔ abcdefghijklmnopqrstuvwxyz()[]{}<>\|/'"`^*+=-~_.,:;!?@#$%& 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ
 ```
 
 **text**
 
-`"text"`
+- `'text'`
+- `"text"`
 
 ```air
-"🜁: Alchemical Symbol For Air"
+'🜁: Alchemical Symbol For Air'
 ➔ 🜁: Alchemical Symbol For Air
 
 "'a'"_(this is a comment)_[X1f701 ' " sp ht cr lf]_'"a"'
 ➔ 'a'🜁'" \t\r\n"a"
 
     "()[]{}<>\|/'"_
-    |'"`^*+=-~_.,:;!?@#$%&'_
-    |(this is a comment)_
-    |[X1f701 ' " sp ht cr lf]
+    '"`^*+=-~_.,:;!?@#$%&'_
+    (this is a comment)_
+    [X1f701 ' " sp ht cr lf]
 ➔ ()[]{}<>\|/'"`^*+=-~_.,:;!?@#$%&🜁'" \t\r\n
 ```
 
@@ -106,7 +107,7 @@ byte'X00ffff'
 **cell**
 
 - `.(v)`
-- `.'key'` = `.('key')`
+- `.'text'` = `.('text')`
 - `."text"` = `.("text")`
 - `.[l, i, s, t]` = `.([l, i, s, t])`
 - `.{a : map}` = `.({a : map})`
@@ -157,7 +158,7 @@ a : b : c
 **quote**
 
 - `_(v)`
-- `_'key'` = `_('key')`
+- `_'text'` = `_('text')`
 - `_"text"` = `_("text")`
 - `_[l, i, s, t]` = `_([l, i, s, t])`
 - `_{a : map}` = `_({a : map})`
@@ -193,7 +194,7 @@ true is_carmichael_number ?
 **comment**
 
 - `!(t1 t2 ... tn)`
-- `!'key'`
+- `!'text'`
 - `!"text"`
 - `![l, i, s, t]`
 - `!{a : map}`

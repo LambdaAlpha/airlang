@@ -104,7 +104,7 @@ All syntax forms are either bounded forms or unbounded forms.
 ## Comments
 
 - `!(t1 t2 ... tn)`
-- `!'key'`
+- `!'text'`
 - `!"text"`
 - `![l, i, s, t]`
 - `!{a : map}`

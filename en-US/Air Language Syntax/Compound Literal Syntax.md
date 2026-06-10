@@ -3,7 +3,7 @@
 ## Cell
 
 - `.(v)`
-- `.'key'`
+- `.'text'`
 - `."text"`
 - `.[l, i, s, t]`
 - `.{a : map}`
@@ -103,7 +103,7 @@ e f
 ## Quote
 
 - `_(v)`
-- `_'key'`
+- `_'text'`
 - `_"text"`
 - `_[l, i, s, t]`
 - `_{a : map}`

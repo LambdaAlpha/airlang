@@ -18,7 +18,7 @@
 ## Single Symbols
 
 - `\`: (unused)
-- `|`: key and text line continuation
+- `|`: (unused)
 - `/`: (unused)
 - `'`: key delimiter
 - `"`: text delimiter

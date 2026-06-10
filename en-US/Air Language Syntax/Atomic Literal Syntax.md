@@ -10,89 +10,13 @@
 
 `false` represents false.
 
-## Key
-
-### Literal Form
-
-`xxx`
-
-Most keys can be written in literal form. The following keys cannot:
-
-- The empty key
-- Keywords
-- Keys starting with a digit
-- Keys containing delimiters
-
-Examples:
-
-- `a` represents `a`
-- `~` represents `~`
-- `!!` represents `!!`
-
-```air
-a
-a_string
-str2
-%
-+
-+=
-+u
-->
-;a
-a;
-:a
-a:
-?a
-a?
-;
-':'
-!
-?
-```
-
-### Canonical Form
-
-`'xxx'"xxx"(xxx)[xxx]`
-
-Largely follows text syntax, with the following differences:
-
-- Key character range is printable characters
-- Multi-line mode for keys only allows `|`, not `.` or `:`, because newline is not a valid key
-- Keys start in single-bracket mode
-
-Examples:
-
-```air
->=
-➔ >=
-
-a.b.c
-➔ a.b.c
-
-'[0, 1, 2]'
-➔ [0, 1, 2]
-
-'"a"'(this is a comment)[X3f ' " ) ( sp]"'a'"
-➔ "a"?'")( 'a'
-
-'abcdefghijklmnopqrstuvwxyz'_
-|"()[]{}<>\|/'"_
-|'"`^*+=-~_.,:;!?@#$%&'_
-|(this is a comment)_
-|[sp 0 1 2 3 4 5 6 7 8 9]_
-|'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-➔ abcdefghijklmnopqrstuvwxyz()[]{}<>\|/'"`^*+=-~_.,:;!?@#$%& 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ
-```
-
 ## Text
 
 `"xxx"'xxx'(xxx)[xxx]`
 
-Starts in double-bracket mode.
+Starts in single-bracket or double-bracket mode.
 
 Supports the Unicode character set.
-
-Carriage return must be followed by line feed. To represent a standalone carriage return, use `cr` in lexical mode.
 
 ### Single-Bracket Mode
 
@@ -166,22 +90,92 @@ All Unicode characters can be expressed using hexadecimal code points prefixed w
 
 For long or complex text, line-splitting forms can be used.
 
-If a line break falls between two modes, the connector `_` must be used first. Indentation after the line break is ignored. Then follows `|` (no line break), `.` (lf), or `:` (crlf).
+No mode can contain a line break; before a line break, the current mode must be ended first, followed by `_` (no line break), `.` (lf), or `:` (crlf), then lf or crlf. Carriage return must be followed by line feed. To represent a standalone carriage return, use `cr` in lexical mode. Spaces and tabs after the line break are ignored.
 
 Examples:
 
 ```air
-"🜁: Alchemical Symbol For Air"
+'🜁: Alchemical Symbol For Air'
 ➔ 🜁: Alchemical Symbol For Air
 
 "'a'"(this is a comment)[X1f701 ' " sp ht cr lf]'"a"'
 ➔ 'a'🜁'" \t\r\n"a"
 
     "()[]{}<>\|/'"_
-    |'"`^*+=-~_.,:;!?@#$%&'_
-    |(this is a comment)_
-    |[X1f701 ' " sp ht cr lf]
+    '"`^*+=-~_.,:;!?@#$%&'_
+    (this is a comment)_
+    [X1f701 ' " sp ht cr lf]
 ➔ ()[]{}<>\|/'"`^*+=-~_.,:;!?@#$%&🜁'" \t\r\n
+```
+
+## Key
+
+### Literal Form
+
+`xxx`
+
+Most keys can be written in literal form. The following keys cannot:
+
+- The empty key
+- Keywords
+- Keys starting with a digit
+- Keys containing delimiters
+
+Examples:
+
+- `a` represents `a`
+- `~` represents `~`
+- `!!` represents `!!`
+
+```air
+a
+a_string
+str2
+%
++
++=
++u
+->
+;a
+a;
+:a
+a:
+?a
+a?
+;
+':'
+!
+?
+```
+
+### Canonical Form
+
+`key'xxx'"xxx"(xxx)[xxx]`
+
+Prefixed with `key`, followed by text syntax.
+
+Examples:
+
+```air
+>=
+➔ >=
+
+a.b.c
+➔ a.b.c
+
+key'[0, 1, 2]'
+➔ [0, 1, 2]
+
+key'"a"'(this is a comment)[X3f ' " ) ( sp]"'a'"
+➔ "a"?'")( 'a'
+
+key'abcdefghijklmnopqrstuvwxyz'_
+"()[]{}<>\|/'"_
+'"`^*+=-~_.,:;!?@#$%&'_
+(this is a comment)_
+[sp 0 1 2 3 4 5 6 7 8 9]_
+'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+➔ abcdefghijklmnopqrstuvwxyz()[]{}<>\|/'"`^*+=-~_.,:;!?@#$%& 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ
 ```
 
 ## Integer
@@ -196,7 +190,7 @@ An integer `a` consists of a sign (`+` or `-` or none), a base (`BDX`), and a di
 
 The digit sequence must not be empty.
 
-In the `integer'a'` syntax, `a` follows key syntax rules.
+In the `integer'a'` syntax, `a` follows text syntax rules.
 
 A decimal positive integer `integer'+Da'` or `0+Da` may be abbreviated as `a`.
 
@@ -227,7 +221,7 @@ integer'-Xff'
 
 `decimal'a'` or `0a`
 
-In the `decimal'a'` syntax, `a` follows key syntax rules.
+In the `decimal'a'` syntax, `a` follows text syntax rules.
 
 ### Common Form
 
@@ -270,7 +264,7 @@ decimal'-E-8*1.234'_'567'
 
 `byte'a'`
 
-A byte `a` consists of a base (`BX`) and a digit sequence.
+`a` follows text syntax, consisting of a base (`BX`) and a digit sequence.
 
 `B` — binary, followed by a sequence of binary digits (`01`), eight per unit. The sequence may be empty.
 
