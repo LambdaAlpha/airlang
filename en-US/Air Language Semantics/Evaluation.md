@@ -61,7 +61,12 @@ Read-write.
 
 ## Solve
 
-`? f o` ➔ `i`, where `f'(i) = o'` is a fact in the config fact database.
+`? f o` ➔ `i`, as follows:
+1. Evaluate `f` and `o`, obtaining function `f'` and output `o'`
+2. Look up the solver function from config with key `.solver`
+3. Call the solver with input `f' : o'`; the solver must return a fact
+4. Verify that the fact's function and output match `f'` and `o'`
+5. Return the fact's input `i`
 
 ## Structure
 

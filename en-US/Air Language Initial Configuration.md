@@ -15,6 +15,10 @@ Keyed by `.prelude`, the value is a map used to initialize the context.
 
 [Initial Context](./Air%20Language%20Initial%20Configuration/Initial%20Context.md)
 
+## Solver
+
+`.solver`
+
 ## Unit
 
 [Unit](./Air%20Language%20Initial%20Configuration/Unit.md)

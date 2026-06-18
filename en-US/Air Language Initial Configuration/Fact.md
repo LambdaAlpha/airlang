@@ -1,35 +1,31 @@
 # Fact
 
-The fact database is global storage within a config, used to record function call facts (input-output mappings). It supports forward queries and reverse solving.
+## .fact.make
 
-## .fact.put
+Type: function
+
+input should be `func : input`, calls `func` with `input`, constructs a fact, outputs that fact.
+
+## .fact.get_function
 
 Type: function
 
 Context: free
 
-input should be `func : input`, calls `func` with `input`, records the input and output to the fact database.
+input should be a fact, returns input's function.
 
-## .fact.call
-
-Type: function
-
-Context: free
-
-input should be `func : input`, queries `func(input)` from the fact database. If found, returns the output wrapped in a cell; otherwise returns unit.
-
-## .fact.solve
+## .fact.get_input
 
 Type: function
 
 Context: free
 
-input should be `func : output`, reverse-solves for an input such that `func(input) = output` from the fact database. If found, returns the input wrapped in a cell; otherwise returns unit.
+input should be a fact, returns input's input.
 
-## .fact.exist
+## .fact.get_output
 
 Type: function
 
 Context: free
 
-input should be `func : input : output`, checks whether the fact `func(input) = output` exists in the fact database. Returns a bit.
+input should be a fact, returns input's output.

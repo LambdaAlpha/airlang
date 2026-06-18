@@ -86,6 +86,12 @@ Every value has a type. The following types currently exist.
 
 [Solve](./Values/Solve.md)
 
+## Fact
+
+`fact`
+
+[Fact](./Values/Fact.md)
+
 ## Link
 
 `link`

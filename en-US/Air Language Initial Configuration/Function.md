@@ -30,68 +30,68 @@ Represents a function. Outputs a map
 
 Type: function
 
-Context: constant
+Context: free
 
 Input: free
 
-ctx should be a function, outputs whether ctx is context-free.
+input should be a function, outputs whether input is context-free.
 
 ## .function.is_constant
 
 Type: function
 
-Context: constant
+Context: free
 
 Input: free
 
-ctx should be a function, outputs whether ctx is context-constant. If default, outputs unit.
+input should be a function, outputs whether input is context-constant. If default, outputs unit.
 
 ## .function.is_input_free
 
 Type: function
 
-Context: constant
+Context: free
 
 Input: free
 
-ctx should be a function, outputs whether ctx is input-free.
+input should be a function, outputs whether input is input-free.
 
 ## .function.is_primitive
 
 Type: function
 
-Context: constant
+Context: free
 
 Input: free
 
-ctx should be a function, outputs whether ctx is a primitive function.
+input should be a function, outputs whether input is a primitive function.
 
 ## .function.get_code
 
 Type: function
 
-Context: constant
+Context: free
 
 Input: free
 
-ctx should be a function, outputs ctx's code representation.
+input should be a function, outputs input's code representation.
 
 ## .function.get_prelude
 
 Type: function
 
-Context: constant
+Context: free
 
 Input: free
 
-ctx should be a function, outputs ctx's initial context.
+input should be a function, outputs input's initial context.
 
 ## .function.get_id
 
 Type: function
 
-Context: constant
+Context: free
 
 Input: free
 
-ctx should be a function, outputs ctx's id. Function equality is equivalent to id equality.
+input should be a function, outputs input's id. Function equality is equivalent to id equality.

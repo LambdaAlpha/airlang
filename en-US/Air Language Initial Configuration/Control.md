@@ -9,7 +9,7 @@ input should be a list, executes the elements `si` of input in order, outputs th
 - If `si` is a call `_ .try i`, evaluate `i` to obtain `c`. If `c` is `.(v)`, stop evaluating subsequent elements and output `v`
 - Otherwise evaluate `si`
 
-## .control.test
+## .control.then
 
 Type: function
 
@@ -18,7 +18,7 @@ input should be `condition : branches`, `branches` should be `branch1` or `branc
 - If `condition` is true, execute `branch1` and output the result (execution follows the `do` pattern)
 - If `condition` is false and `branch2` exists, execute `branch2` and output the result (execution follows the `do` pattern)
 
-## .control.switch
+## .control.branch
 
 Type: function
 
@@ -49,7 +49,7 @@ input should be `condition : body`
    - If the result is `.(v)`, output `v`
    - Otherwise go to 1
 
-## .control.iterate
+## .control.each
 
 Type: function
 

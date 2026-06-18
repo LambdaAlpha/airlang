@@ -31,6 +31,8 @@ Outputs a key representing ctx's type.
 - Map: `.map`
 - Quote: `.quote`
 - Call: `.call`
+- Solve: `.solve`
+- Fact: `.fact`
 - Link: `.link`
 - Config: `.config`
 - Function: `.function`
