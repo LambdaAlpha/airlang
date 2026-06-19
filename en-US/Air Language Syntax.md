@@ -103,23 +103,19 @@ All syntax forms are either bounded forms or unbounded forms.
 
 ## Comments
 
-- `!(t1 t2 ... tn)`
+- `!(v)`
 - `!'text'`
 - `!"text"`
 - `![l, i, s, t]`
 - `!{a : map}`
 
-Comment content is discarded during parsing. Comment content is a sequence of:
-
-- Whitespace
-- Comments
-- `,`
-- Bounded-form tokens
+The content of the comment is a value that is discarded during parsing.
 
 ```air
 !"comment"
-[1, !(2, 3,) 4]
-{a : !(1, b :) 2}
+[1, ![2, 3,] 4]
+{a : 1, !{b : 2,} c : 3}
+!(a and _) b and c
 ```
 
 ## Scopes
