@@ -38,10 +38,6 @@ Values can be constructed, discarded, copied, moved, modified, compared, etc.
 
 A config is a container for global environment information.
 
-A config is also a value.
-
-[Config](./Air%20Language%20Semantics/Values/Config.md)
-
 ## Context
 
 Context is a container for local environment information when calling a function.

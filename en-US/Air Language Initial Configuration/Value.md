@@ -34,7 +34,6 @@ Outputs a key representing ctx's type.
 - Solve: `.solve`
 - Fact: `.fact`
 - Link: `.link`
-- Config: `.config`
 - Function: `.function`
 - Other extension types
 

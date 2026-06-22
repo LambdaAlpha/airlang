@@ -1,21 +1,5 @@
 # Config
 
-## .config.make
-
-Type: function
-
-Context: free
-
-input should be a map, constructs a config from input.
-
-## .config.represent
-
-Type: function
-
-Context: free
-
-input should be a config, represents input as a map.
-
 ## .config.exist
 
 Type: function
@@ -44,11 +28,11 @@ input should be `key : value`, exports `value` to cfg under `key`.
 
 Type: function
 
-Context: constant
+Context: free
 
 Input: free
 
-ctx should be a config, gets the length of cfg.
+Gets the length of cfg.
 
 ## .config.with
 
@@ -72,4 +56,4 @@ Type: function
 
 Context: mutable
 
-input should be `cfg : body`, looks up the context `c1` from cfg using key `cfg`, executes `body` with `c1` as config and `c1`'s initial context as context.
+input should be `cfg : body`, looks up the context `c1` from cfg using key `cfg`, executes `body` with map `c1` as config and `c1`'s initial context as context. Returns `output : aborted`, where `output` is the output of executing `body`, and the bit `aborted` indicates whether the execution process has been aborted.

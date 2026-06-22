@@ -27,7 +27,6 @@ In the initial context, key-value bindings are mutable.
 - `>.`: .decimal.greater
 - `>=.`: .decimal.greater_equal
 - `<>.`: .decimal.less_greater
-- `move`: .map.move
 - `quote`: .quote.make
 - `call`: .call.make
 - `solve`: .solve.make
@@ -38,6 +37,7 @@ In the initial context, key-value bindings are mutable.
 - `with`: .config.with
 - `function`: .function.make
 - `get`: .context.get
+- `take`: .context.take
 - `set`: .context.set
 - `is`: .context.is
 - `let`: .context.let
@@ -58,7 +58,7 @@ In the initial context, key-value bindings are mutable.
 
 ## Other
 
-- `empty : ''`
+- `empty : key''`
 - `return : .(.)`
 - `continue : .(.)`
 - `break : .(.(.))`

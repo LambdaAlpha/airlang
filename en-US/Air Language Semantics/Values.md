@@ -98,12 +98,6 @@ Every value has a type. The following types currently exist.
 
 [Link](./Values/Link.md)
 
-## Config
-
-`config`
-
-[Config](./Values/Config.md)
-
 ## Function
 
 `function`
